@@ -1,6 +1,7 @@
 
 Mini-project: Foot size estimation
 ------------------------------------------------------------------------------------------------------------------------
+https://github.com/hoanganh27042001/FootSizeEstimation
 
 A demo website using Streamlit with the following functionalities:
 
