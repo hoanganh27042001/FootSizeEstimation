@@ -1,4 +1,5 @@
-##Mini-project: Foot size estimation  ##
+
+##Mini-project: Foot size estimation
 
 A demo website using Streamlit with the following functionalities:
 
