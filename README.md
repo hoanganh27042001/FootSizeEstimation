@@ -13,6 +13,8 @@ A demo website using Streamlit with the following functionalities:
 
 - output width, height and corresponding size
 
+![img.png](img.png)
+
 How to Evaluate?
 ------------------------------------------------------------------------------------------------------------------------
 - Clone the repo: git clone https://github.com/hoanganh27042001/FootSizeEstimation.git
@@ -32,11 +34,9 @@ Working approach
 - Calculate the foot size base on the ratio between the paper and foot.
 https://www.dienmayxanh.com/kinh-nghiem-hay/cach-xac-dinh-size-giay-cho-nam-gioi-don-gian-de-1357862
 
-Assumptions
+Limitations
 ------------------------------------------------------------------------------------------------------------------------
-- Printer Paper is used as a reference (Height/Width is known and White background will help in Preprocessing)
-- Foot should be in center, touching one edge of paper.
-- Floor color should be different than white.
-- Paper should be completely visible (with 4 corners) in the image.
-- No other objects are included in the image.
-- Avoid the foot shadow in the image.
+- If floor color is white, then it will difficult to segment the paper.
+- Feet should not go out of the paper. 
+- If there is no closed curv after edge detection, its difficult to find bounding box. Only closed curv is considered as a contour. And bounding box is generated on top of that.
+- If the paper is not clearly visible (with full 4 conners), the bounding box for the paper might be wrong and the estimation might be affected.

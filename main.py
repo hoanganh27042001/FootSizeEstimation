@@ -31,8 +31,7 @@ def main():
         """
     )
     image_file = st.file_uploader("Choose an image", type = ["png", "jpg", "jpeg"])
-    menu = ["", "Height", "Width"]
-    choice = st.selectbox("Measurement: ", menu)
+
     if image_file is not None:
         # To See Details
         file_details = {"filename": image_file.name, "filetype": image_file.type,
@@ -79,6 +78,43 @@ def main():
 
         print("feet size (cm): ", calcFeetSize(warped, boundRect))
         st.write("Estimated foot size (cm): ", calcFeetSize(warped, boundRect))
+        height, width = calcFeetSize(warped, boundRect)
 
+        height_size = [24.4, 24.8, 25.2, 25.7, 26, 26.5, 26.8, 27.3, 27.8, 28.3, 28.6, 29.4]
+        Size_VN_h = ['40', '40-41', '41', '41-42', '42', '42-43', '43', '43-44', '44-45', '45', '46']
+        Size_UK_h = ['6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12']
+        Size_US_h = ['7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '11.5', '12', '13']
+
+        width_size = [9.8, 10, 10, 10.2, 10.2, 10.4, 10.4, 10.6, 10.6, 10.8, 10.8, 11, 11]
+        Size_VN_w = ['38', '38-39', '39', '39-40', '40','40-41', '41', '41-42', '42', '42-43', '43', '43-44', '44']
+        Size_UK_w = ['4.5', '5', '5.5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5']
+        Size_US_w = ['5', '5.5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11']
+        menu = ["Height", "Width"]
+        choice = st.selectbox("Measurement: ", menu)
+        if choice == 'Height':
+            st.write('The estimated height is: {} cm'.format(height))
+            index = -1
+            for i in range(len(height_size)-1):
+                if height_size[i] <= height <= height_size[i+1]:
+                    index = i
+
+            if index >=0:
+                st.write('The suitable size by foot height is: ')
+                st.write('+ Size VN: {}\n + Size UK: {}\n + Size US: {}'.format(Size_VN_h[index], Size_UK_h[index], Size_US_h[index]))
+            else:
+                st.write('Cannot estimate size')
+        elif choice == 'Width':
+            st.write('The estimated height is: {} cm'.format(width))
+            index = -1
+            for i in range(len(width_size)-1):
+                if width_size[i] <= width < width_size[i + 1]:
+                    index = i
+
+            if index >= 0:
+                st.write('The suitable size by foot width is: ')
+                st.write('+ Size VN: {}\n + Size UK: {}\n + Size US: {}'.format(Size_VN_w[index], Size_UK_w[index],
+                                                                                Size_US_w[index]))
+            else:
+                st.write('Cannot estimate size')
 if __name__ == '__main__':
     main()
