@@ -15,7 +15,7 @@ A demo website using Streamlit with the following functionalities:
 
 - output width, height and corresponding size
 
-![img.png](img.png)
+![img.png](output/img.png)
 
 How to Evaluate?
 ------------------------------------------------------------------------------------------------------------------------
