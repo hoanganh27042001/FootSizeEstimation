@@ -17,8 +17,20 @@ ImgPath = 'images/23840.jpeg'
 
 
 def main():
-    st.title("Upload image file")
-    image_file = st.file_uploader("Upload Images", type = ["png", "jpg", "jpeg"])
+    st.title("Foot size estimation ")
+    st.markdown(
+        """
+        **Requirements:**
+        
+        - Printer Paper is used as a reference (Height/Width is known and White background will help in Preprocessing)
+        - Foot should be in center, touching one edge of paper.
+        - Floor color should be different than white.
+        - Paper should be completely visible (with 4 corners) in the image.
+        - No other objects are included in the image.
+        - Avoid the foot shadow in the image.
+        """
+    )
+    image_file = st.file_uploader("Choose an image", type = ["png", "jpg", "jpeg"])
 
     if image_file is not None:
         # To See Details
