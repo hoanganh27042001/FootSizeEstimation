@@ -31,12 +31,13 @@ def main():
         """
     )
     image_file = st.file_uploader("Choose an image", type = ["png", "jpg", "jpeg"])
-
+    menu = ["", "Height", "Width"]
+    choice = st.selectbox("Measurement: ", menu)
     if image_file is not None:
         # To See Details
         file_details = {"filename": image_file.name, "filetype": image_file.type,
                         "filesize": image_file.size}
-        st.write(file_details)
+        # st.write(file_details)
         st.image(Image.open(image_file), 'Uploaded image', width=250)
         oimg = imread(image_file)
 
@@ -77,7 +78,7 @@ def main():
         st6.image(draw, '6. foot measurement', width = 250)
 
         print("feet size (cm): ", calcFeetSize(warped, boundRect))
-        st.write("foot size (cm): ", calcFeetSize(warped, boundRect))
+        st.write("Estimated foot size (cm): ", calcFeetSize(warped, boundRect))
 
 if __name__ == '__main__':
     main()
